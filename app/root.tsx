@@ -7,8 +7,16 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+//  prevent font awesome icons from loading large at first on server side
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false; /* eslint-disable import/first */
+/***** */
+
 import type { Route } from "./+types/root";
 import stylesheet from "./app.css?url";
+import { Auth0Provider } from "@auth0/auth0-react";
+import Header from "~/components/header/header";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -43,7 +51,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  if (typeof window !== "undefined") console.log(window.location.origin);
+  return (
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri:
+          typeof window !== "undefined" ? window.location.origin : undefined,
+      }}
+    >
+      <Header />
+      <Outlet />
+    </Auth0Provider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
