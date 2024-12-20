@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import LoginButton from "~/components/authentication/loginButton";
 import LogoutButton from "~/components/authentication/logoutButton";
+import LoadingSpinner from "~/components/loadingSpinner/loadingSpinner";
 import Modal from "~/components/modal/modal";
 
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
   return (
     <header className="grid justify-end m-4">
       {isLoading ? (
-        <FontAwesomeIcon icon={faSpinner} spin size="2xl" />
+        <LoadingSpinner />
       ) : (
         <Modal
           basic={false}
