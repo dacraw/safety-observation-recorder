@@ -8,7 +8,7 @@ import Modal from "~/components/modal/modal";
 
 export default function Header() {
   return (
-    <header>
+    <header className="grid justify-end m-4">
       <Modal
         basic={false}
         modalName="navigation"

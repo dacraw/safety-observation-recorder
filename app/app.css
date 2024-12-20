@@ -10,3 +10,56 @@ body {
     color-scheme: dark;
   }
 }
+
+@layer components {
+  .green-button {
+    @apply green-background rounded text-gray-100 font-bold py-2 px-4 hover:bg-green-500/90 cursor-pointer  transition-colors duration-300;
+  }
+
+  .green-background {
+    @apply bg-green-700/80  backdrop-blur;
+  }
+  .blue-button {
+    @apply blue-background rounded text-gray-100 font-bold py-2 px-4 cursor-pointer blue-button-hover;
+  }
+
+  .blue-button-hover {
+    @apply hover:bg-blue-400/90 transition-colors duration-300;
+  }
+
+  .blue-background {
+    @apply bg-gradient-to-br from-blue-600/90 to-blue-700/90 backdrop-blur;
+  }
+
+  .dark-blue-background {
+    @apply bg-gradient-to-b to-gray-950/80 from-blue-950/80 backdrop-blur;
+  }
+
+  .gray-button {
+    @apply gray-background rounded text-gray-100 font-bold py-2 px-4 cursor-pointer  transition-colors duration-300;
+  }
+
+  .gray-button-hover {
+    @apply hover:bg-gradient-to-t hover:from-gray-500/80 hover:to-gray-600/80 rounded transition-colors font-bold;
+  }
+
+  .gray-background {
+    @apply backdrop-blur overflow-auto bg-gradient-to-b from-gray-600/80 to-gray-700/80;
+  }
+
+  .dark-gray-background {
+    @apply backdrop-blur overflow-auto bg-gradient-to-b from-gray-800/80 to-gray-900/80;
+  }
+
+  .red-button {
+    @apply bg-red-700 rounded text-gray-100 font-bold py-2 px-4 cursor-pointer hover:bg-red-500 transition-colors duration-300;
+  }
+
+  .site-link {
+    @apply font-bold underline text-blue-200;
+  }
+
+  .page-title {
+    @apply animate-home-title-shimmer font-bold text-2xl p-4 text-center mb-6;
+  }
+}

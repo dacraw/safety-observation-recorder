@@ -66,7 +66,7 @@ const Modal = ({
             } md:top-8 md:left-auto 
           `}
         >
-          <div className="flex justify-end md:hidden">
+          <div className="flex justify-end md:hidden mb-4">
             <div
               className="cursor-pointer inline-flex items-center gap-x-2 border-2 rounded-lg bg-white text-gray-950 font-bold text-sm px-2 overflow-y-auto"
               onClick={() => handleToggle(false)}
