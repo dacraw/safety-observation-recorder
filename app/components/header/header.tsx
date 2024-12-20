@@ -11,7 +11,7 @@ import Modal from "~/components/modal/modal";
 export default function Header() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  console.log(user?.name);
+  console.log(user);
   console.log(isAuthenticated);
 
   return (
