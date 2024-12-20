@@ -98,3 +98,9 @@ This template comes with [Tailwind CSS](https://tailwindcss.com/) already config
 ---
 
 Built with ❤️ using React Router.
+
+# NGROK
+
+When developing locally, run this command in order to work with organization signup via Auth0
+
+`ngrok http --url=glad-promoted-falcon.ngrok-free.app 5173`

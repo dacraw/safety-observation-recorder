@@ -11,9 +11,6 @@ import Modal from "~/components/modal/modal";
 export default function Header() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  console.log(user);
-  console.log(isAuthenticated);
-
   return (
     <header className="grid justify-end m-4">
       {isLoading ? (
