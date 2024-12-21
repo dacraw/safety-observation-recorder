@@ -17,3 +17,47 @@ model User {
   id Int @id @default(autoincrement())
   email String @unique
 }
+
+model Organization {
+  id Int @id @default(autoincrement())
+  auth0OrgId String @unique
+  weeklyObservations WeeklyObservation[]
+}
+
+model WeeklyObservation {
+  id Int @id @default(autoincrement())
+  weekOf DateTime
+  organizationId Int
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sections Section[]
+}
+
+model Section {
+  id Int @id @default(autoincrement())
+  name String
+  weeklyObservationId Int
+  weeklyObservation WeeklyObservation @relation(references: [id], fields: [weeklyObservationId], onDelete: Cascade, onUpdate: Cascade)
+  questions Question[]
+}
+
+model Question {
+  id Int @id @default(autoincrement())
+  text String
+  sectionId Int
+  section Section @relation(references: [id], fields: [sectionId])
+  responses Response[]
+}
+
+enum ResponseChoice {
+  NO_RESPONSE
+  CANNOT_DETERMINE
+  YES
+  NO
+}
+
+model Response {
+  id Int @id @default(autoincrement())
+  choice ResponseChoice
+  question Question @relation(references: [id], fields: [questionId])
+  questionId Int
+}
