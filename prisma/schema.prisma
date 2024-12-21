@@ -21,30 +21,45 @@ model User {
 model Organization {
   id Int @id @default(autoincrement())
   auth0OrgId String @unique
-  weeklyObservations WeeklyObservation[]
+  plants Plant[]
 }
 
-model WeeklyObservation {
+model Plant {
+  id Int @id @default(autoincrement())
+  organizationId Int
+  organization Organization @relation(references: [id], fields: [organizationId], onDelete: Cascade, onUpdate: Cascade)
+  observations Observation[]
+}
+
+model Observation {
   id Int @id @default(autoincrement())
   weekOf DateTime
-  organizationId Int
-  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sections Section[]
+  plantId Int
+  plant Plant @relation(fields: [plantId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  categories Category[]
 }
 
-model Section {
+model Category {
   id Int @id @default(autoincrement())
   name String
-  weeklyObservationId Int
-  weeklyObservation WeeklyObservation @relation(references: [id], fields: [weeklyObservationId], onDelete: Cascade, onUpdate: Cascade)
+  observationId Int
+  observation Observation @relation(references: [id], fields: [observationId], onDelete: Cascade, onUpdate: Cascade)
+  subcategories Subcategory[]
+}
+
+model Subcategory {
+  id Int @id @default(autoincrement())
+  name String
+  categoryId Int
+  category Category @relation(references: [id], fields: [categoryId], onUpdate: Cascade, onDelete: Cascade)
   questions Question[]
 }
 
 model Question {
   id Int @id @default(autoincrement())
   text String
-  sectionId Int
-  section Section @relation(references: [id], fields: [sectionId])
+  subcategoryId Int
+  subcategory Subcategory @relation(references: [id], fields: [subcategoryId])
   responses Response[]
 }
 
