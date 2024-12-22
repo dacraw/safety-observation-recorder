@@ -1,13 +1,14 @@
 import { PrismaClient } from "@prisma/client";
+import { env } from "process";
+import { createUser } from "~/models/user.server";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const user = await prisma.user.create({
-    data: {
-      email: "demo_supervisor@demo.com",
-    },
-  });
+  const user = await createUser(
+    "demo_supervisor@safetyobservations.test",
+    process.env["DEMO_SUPERVISOR_PASSWORD"]!
+  );
 
   const organization1 = await prisma.organization.create({
     data: {
@@ -19,6 +20,11 @@ async function main() {
     data: {
       name: "Mega Plant",
       organization: { connect: { id: organization1.id } },
+      userPlants: {
+        create: {
+          user: { connect: { id: user.id } },
+        },
+      },
     },
   });
 

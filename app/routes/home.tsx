@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../components/welcome/welcome";
+import { getUser } from "~/session.server";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +9,15 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Welcome />;
+export async function loader({ request }: Route.LoaderArgs) {
+  const user = await getUser(request);
+  return { user };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  const { user } = loaderData;
+
+  if (!user) return null;
+
+  return <Welcome user={loaderData.user!} />;
 }
