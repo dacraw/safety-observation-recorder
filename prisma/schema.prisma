@@ -29,6 +29,7 @@ model Password {
 model Organization {
   id Int @id @default(autoincrement())
   auth0OrgId String @unique
+  name String
   plants Plant[]
 }
 
