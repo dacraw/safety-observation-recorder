@@ -13,6 +13,7 @@ async function main() {
   const organization1 = await prisma.organization.create({
     data: {
       auth0OrgId: "org_F7T4jwkIi4qPVcfm",
+      name: "ABC Organization",
     },
   });
 

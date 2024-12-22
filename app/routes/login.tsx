@@ -36,7 +36,6 @@ import { safeRedirect, validateEmail } from "~/sessionUtils";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await getUserId(request);
-  console.log(userId);
   if (userId) return redirect("/");
   return {};
 };

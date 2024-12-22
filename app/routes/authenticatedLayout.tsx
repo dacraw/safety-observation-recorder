@@ -12,7 +12,6 @@ export default function AuthenticatedLayout({
   loaderData,
 }: Route.ComponentProps) {
   const { user } = loaderData;
-  console.log(user);
   return (
     <div>
       {user ? (
