@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useOutletContext, useSubmit } from "react-router";
+import { redirect, useOutletContext, useSubmit } from "react-router";
 import type { Route } from "./+types/new";
 import { PrismaClient, ResponseChoice } from "@prisma/client";
 import { prisma } from "~/db.server";
@@ -46,10 +46,10 @@ export async function action({ request, params }: Route.ActionArgs) {
       },
     },
   });
-  // await prisma.response.createMany({
-  //   data: formDataEntries
-  // })
-  console.log("new observation action formDataEntries", formDataEntries);
+
+  return redirect(
+    `/plants/${Number(params.id)}/observations/${observation.id}`
+  );
 }
 
 export default function NewObservation({ actionData }: Route.ComponentProps) {

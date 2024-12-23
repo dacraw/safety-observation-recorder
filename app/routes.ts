@@ -10,10 +10,11 @@ export default [
     index("routes/home.tsx"),
     route("logout", "routes/logout.tsx"),
     route("/plants", "./routes/plants/layout.tsx", [
-      route(":id", "./routes/plants/show.tsx", [
-        route("observations", "routes/observations/layout.tsx", [
-          index("./routes/observations/index.tsx"),
-          route("new", "./routes/observations/new.tsx"),
+      route(":id", "./routes/plants/show/show.tsx", [
+        route("observations", "routes/plants/show/observations/layout.tsx", [
+          index("./routes/plants/show/observations/index.tsx"),
+          route("new", "./routes/plants/show/observations/new.tsx"),
+          route(":observationId", "./routes/plants/show/observations/show.tsx"),
         ]),
       ]),
     ]),

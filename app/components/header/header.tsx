@@ -39,12 +39,12 @@ export default function Header({ user }: { user: User }) {
                 <button type="submit">Log Out</button>
               </Form>
               {/* <LogoutButton className="bg-blue-600/80 block rounded p-2" /> */}
-              <Link
+              {/* <Link
                 className="bg-blue-600/80 block rounded p-2"
                 to="/observations"
               >
                 View Observations
-              </Link>
+              </Link> */}
             </>
           ) : (
             <>
