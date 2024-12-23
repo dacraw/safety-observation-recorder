@@ -51,9 +51,21 @@ body {
     @apply backdrop-blur overflow-auto bg-gradient-to-b from-gray-800/80 to-gray-900/80;
   }
 
+  .observation-option-bg {
+    @apply bg-gradient-to-b from-gray-500 to-gray-600;
+  }
+  .observation-option-selected-bg {
+    @apply bg-gradient-to-b from-green-500 to-green-600;
+  }
+
+  .observation-option-after {
+    @apply content-[''] absolute inset-0 bg-gradient-to-b from-green-500 to-green-600 opacity-0 transition-all duration-300 -z-10 rounded;
+  }
+
   .observation-option {
-    @apply rounded flex text-center py-2 items-center justify-center h-full transition-colors duration-300 bg-gray-400 
-      peer-checked:green-background;
+    @apply rounded relative z-20 flex text-center py-2 items-center justify-center h-full  observation-option-bg
+    after:observation-option-after
+      peer-checked:after:opacity-100;
   }
 
   .red-button {

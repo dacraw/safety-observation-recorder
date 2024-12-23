@@ -67,21 +67,29 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
       <h3 className="font-bold text-xl mb-6">Create a new observation</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-700 rounded p-4 m-4"
+        className="bg-gray-600 rounded p-4 m-4"
       >
-        <fieldset className="grid mb-6">
-          <legend>Current Plant: {context?.plant?.name}</legend>
+        <fieldset className="grid mb-2">
+          <legend className="bg-gray-950 p-2 rounded block w-full">
+            Plant: {context?.plant?.name}
+          </legend>
         </fieldset>
         <fieldset>
           {context?.categories.map((category) => (
             <div className="grid gap-2" key={category.id}>
-              <legend>Category: {category?.name}</legend>
+              <legend className="sticky top-0 z-40 bg-gray-900 p-2 rounded">
+                Category: {category?.name}
+              </legend>
               {category.subcategories.map((subcategory) => (
                 <div className="grid gap-2" key={subcategory.id}>
-                  <h4>Subcategory: {subcategory.name}</h4>
+                  <legend className="sticky top-10 z-40 bg-gray-800 p-2 rounded">
+                    Subcategory: {subcategory.name}
+                  </legend>
                   {subcategory.questions.map((question) => (
-                    <fieldset key={question.id}>
-                      <legend>Question: {question.text}</legend>
+                    <div className="bg-gray-700 rounded p-2" key={question.id}>
+                      <legend className="mb-4 text-center">
+                        {question.text}
+                      </legend>
                       <div className="grid grid-cols-3 gap-2">
                         <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
@@ -134,14 +142,18 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                           </label>
                         </div>
                       </div>
-                    </fieldset>
+                    </div>
                   ))}
                 </div>
               ))}
             </div>
           ))}
         </fieldset>
-        <input className="p-2 m-2 bg-green-400 rounded" type="submit" />
+        <input
+          className="px-2 py-4 my-2 font-bold text-white bg-green-500 rounded block w-full"
+          type="submit"
+          value="Submit Observation"
+        />
       </form>
     </div>
   );
