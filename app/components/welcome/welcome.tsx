@@ -21,7 +21,7 @@ export function Welcome({
       <h5 className="text-lg font-bold mb-4">
         Organization: {organization.name}
       </h5>
-      <h3 className="font-bold">Select a plant below to begin:</h3>
+      <h3 className="font-bold">Select one of your plants below to begin:</h3>
       {plants.map((plant) => (
         <Link
           className="p-2 blue-button text-center"

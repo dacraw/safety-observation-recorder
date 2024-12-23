@@ -13,7 +13,7 @@ body {
 
 @layer components {
   .active-nav-link {
-    @apply underline text-green-500;
+    @apply gray-background rounded py-2;
   }
   .green-button {
     @apply green-background rounded text-gray-100 font-bold py-2 px-4 hover:bg-green-500/90 cursor-pointer  transition-colors duration-300;

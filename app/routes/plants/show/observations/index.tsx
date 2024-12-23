@@ -12,15 +12,24 @@ export default function ObservationsIndex() {
         </h3>
       </div>
       <div className="grid gap-1">
-        {context.observations.map((observation) => (
-          <Link
-            key={observation.id}
-            className="bg-blue-400 text-white rounded p-2 text-center"
-            to={`${observation.id}`}
-          >
-            Week of: {observation.weekOf.toLocaleDateString()}
-          </Link>
-        ))}
+        {context?.observations?.length > 0 ? (
+          context.observations.map((observation) => (
+            <Link
+              key={observation.id}
+              className="bg-blue-400 text-white rounded p-2 text-center"
+              to={`${observation.id}`}
+            >
+              Week of: {observation.weekOf.toLocaleDateString()}
+            </Link>
+          ))
+        ) : (
+          <div className="grid gap-2">
+            <p>You currently have no observations.</p>
+            <Link to="new" className="blue-button">
+              Create New Observation
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
