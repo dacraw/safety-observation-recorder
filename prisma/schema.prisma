@@ -18,6 +18,7 @@ model User {
   email String @unique
   password Password?
   userPlants UserPlant[]
+  observations Observation[]
 }
 
 model Password {
@@ -74,6 +75,9 @@ model Observation {
   weekOf DateTime
   plantId Int
   plant Plant @relation(fields: [plantId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId Int
+  user User @relation(fields: [userId], references: [id] )
+  responses Response[]
 }
 
 
@@ -97,4 +101,7 @@ model Response {
   choice ResponseChoice
   question Question @relation(references: [id], fields: [questionId])
   questionId Int
+  observation Observation @relation(references: [id], fields: [observationId])
+  observationId Int
+  
 }
