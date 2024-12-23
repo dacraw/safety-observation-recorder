@@ -27,7 +27,6 @@ export default function ObservationsLayout({
 
   return (
     <main>
-      <ObservationsNavigation />
       <Outlet context={{ ...context, user: loaderData?.user }} />
     </main>
   );

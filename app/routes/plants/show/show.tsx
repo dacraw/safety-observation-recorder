@@ -1,4 +1,4 @@
-import { Link, Outlet, useOutletContext } from "react-router";
+import { Link, NavLink, Outlet, useOutletContext } from "react-router";
 import type { Route } from "./+types/show";
 import { prisma } from "~/db.server";
 import { requireUserId } from "~/session.server";
@@ -25,8 +25,24 @@ export default function PlantShow({ loaderData }: Route.ComponentProps) {
   //   console.log("plant show loader data", loaderData?.categories);
   return (
     <div>
-      <Link to="observations/new">New Observation</Link>
-      <Link to="observations">View Your Observations</Link>
+      <nav className="grid grid-cols-2 justify-between items-center text-center py-2 mx-4">
+        <NavLink
+          className={({ isActive }) =>
+            `${isActive ? "active-nav-link" : "text-white"} font-bold`
+          }
+          to="observations/new"
+        >
+          New Observation
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            `${isActive ? "active-nav-link" : "text-white"} font-bold`
+          }
+          to="observations/index"
+        >
+          View Observations
+        </NavLink>
+      </nav>
 
       <Outlet
         context={{
