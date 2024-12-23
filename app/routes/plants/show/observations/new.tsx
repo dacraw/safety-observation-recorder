@@ -82,47 +82,56 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                   {subcategory.questions.map((question) => (
                     <fieldset key={question.id}>
                       <legend>Question: {question.text}</legend>
-                      <div className="grid grid-cols-3">
-                        <div>
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="grid items-center grid-rows-[1fr_auto]">
+                          <input
+                            hidden
+                            {...register(`question-${question.id}-response`)}
+                            id={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
+                            type="radio"
+                            value={ResponseChoice["CANNOT_DETERMINE"]}
+                            className="peer"
+                          />
                           <label
                             htmlFor={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
+                            className="observation-option"
                           >
                             {startCase(
                               ResponseChoice["CANNOT_DETERMINE"].toLowerCase()
                             )}
                           </label>
-                          <input
-                            {...register(`question-${question.id}-response`)}
-                            id={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
-                            type="radio"
-                            value={ResponseChoice["CANNOT_DETERMINE"]}
-                          />
                         </div>
-                        <div>
-                          <label
-                            htmlFor={`${category.id}-${subcategory.id}-${question.id}-no`}
-                          >
-                            {startCase(ResponseChoice["NO"].toLowerCase())}
-                          </label>
+                        <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
+                            hidden
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-no`}
                             type="radio"
                             value={ResponseChoice["NO"]}
+                            className="peer hidden"
                           />
-                        </div>
-                        <div>
                           <label
-                            htmlFor={`${category.id}-${subcategory.id}-${question.id}-yes`}
+                            htmlFor={`${category.id}-${subcategory.id}-${question.id}-no`}
+                            className="observation-option"
                           >
-                            {startCase(ResponseChoice["YES"].toLowerCase())}
+                            {startCase(ResponseChoice["NO"].toLowerCase())}
                           </label>
+                        </div>
+                        <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
+                            hidden
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-yes`}
                             type="radio"
                             value={ResponseChoice["YES"]}
+                            className="peer hidden"
                           />
+                          <label
+                            htmlFor={`${category.id}-${subcategory.id}-${question.id}-yes`}
+                            className="observation-option"
+                          >
+                            {startCase(ResponseChoice["YES"].toLowerCase())}
+                          </label>
                         </div>
                       </div>
                     </fieldset>
