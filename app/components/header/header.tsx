@@ -31,12 +31,13 @@ export default function Header({ user }: { user: User }) {
                 <p>Logged in as:</p>
                 <p>{user?.email}</p>
               </div>
-              <Form
-                className="rounded red-button font-bold py-2 px-4"
-                action="/logout"
-                method="post"
-              >
-                <button type="submit">Log Out</button>
+              <Form className="grid text-center" action="/logout" method="post">
+                <button
+                  className="rounded red-button font-bold py-2 px-4"
+                  type="submit"
+                >
+                  Log Out
+                </button>
               </Form>
               {/* <LogoutButton className="bg-blue-600/80 block rounded p-2" /> */}
               {/* <Link
