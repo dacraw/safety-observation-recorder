@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { env } from "process";
-import { createUser } from "~/models/user.server";
+import { createUser } from "../app/models/user.server";
 
 const prisma = new PrismaClient();
 
