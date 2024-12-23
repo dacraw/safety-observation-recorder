@@ -14,7 +14,7 @@ export function Welcome({
   organization: Organization;
 }) {
   // const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log("welcome user", user);
+  // console.log("welcome user", user);
   return (
     <main className="">
       <div>Welcome {user.email}</div>

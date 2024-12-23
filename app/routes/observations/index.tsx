@@ -2,7 +2,7 @@ import { Link, useOutletContext } from "react-router";
 
 export default function ObservationsIndex() {
   const context = useOutletContext();
-  console.log(context);
+  // console.log(context);
 
   return (
     <div>

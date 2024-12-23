@@ -1,8 +1,9 @@
-import { Outlet } from "react-router";
+import { Outlet, useOutletContext } from "react-router";
 import ObservationsNavigation from "~/components/navigations/observations/observationsNavigation";
 import type { Route } from ".react-router/types/app/routes/observations/+types/layout";
 import { prisma } from "~/db.server";
 import { getUserId } from "~/session.server";
+import type { Category } from "@prisma/client";
 
 export async function loader({ request }: Route.LoaderArgs) {
   const userId = await getUserId(request);
@@ -22,12 +23,12 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function ObservationsLayout({
   loaderData,
 }: Route.ComponentProps) {
-  // console.log(loaderData?.user);
+  const context = useOutletContext<{ categories: Category[] }>();
 
   return (
     <main>
       <ObservationsNavigation />
-      <Outlet context={{ user: loaderData?.user }} />
+      <Outlet context={{ ...context, user: loaderData?.user }} />
     </main>
   );
 }
