@@ -43,8 +43,6 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 
 export default function ObservationShow({ loaderData }: Route.ComponentProps) {
   const context = useOutletContext();
-  console.log("observation show loaderData", loaderData);
-  //   console.log("observation show context", context);
   return (
     <div>
       <div>

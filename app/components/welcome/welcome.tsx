@@ -13,8 +13,6 @@ export function Welcome({
   plants: Plant[];
   organization: Organization;
 }) {
-  // const { user, isAuthenticated, isLoading } = useAuth0();
-  // console.log("welcome user", user);
   return (
     <main className="grid gap-2">
       <div>Welcome {user.email}</div>

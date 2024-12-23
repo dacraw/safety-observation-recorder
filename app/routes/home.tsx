@@ -27,7 +27,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const { user, userPlants } = loaderData;
   const plants = loaderData?.userPlants?.map(({ plant }) => plant);
   const organization = plants[0].organization;
-  // console.log("home plants", plants);
 
   if (!user) return null;
 

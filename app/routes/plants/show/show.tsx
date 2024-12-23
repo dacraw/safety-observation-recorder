@@ -22,7 +22,6 @@ export async function loader({ request, params }: Route.LoaderArgs) {
 }
 
 export default function PlantShow({ loaderData }: Route.ComponentProps) {
-  //   console.log("plant show loader data", loaderData?.categories);
   return (
     <div>
       <nav className="grid grid-cols-2 justify-between items-center text-center py-2 mx-4">

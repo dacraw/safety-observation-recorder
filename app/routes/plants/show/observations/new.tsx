@@ -7,6 +7,11 @@ import { requireUserId } from "~/session.server";
 import { startCase } from "lodash-es";
 
 // trying this since there seems to be an issue with enums in production
+/**
+ Uncaught TypeError: Failed to resolve module specifier ".prisma/client/index-browser". 
+ Relative references must start with either "/", "./", or "../".
+ */
+// look into ensuring the .prisma folder is being copied in the Dockerfile, also the below:
 // https://github.com/sveltejs/kit/issues/4444
 // https://github.com/prisma/prisma/issues/12504#issuecomment-1136126199
 const RESPONSE_CHOICE = {
@@ -64,10 +69,8 @@ export async function action({ request, params }: Route.ActionArgs) {
 export default function NewObservation({ actionData }: Route.ComponentProps) {
   const { register, handleSubmit } = useForm();
   const context = useOutletContext();
-  // console.log("new observation context", context);
   const submit = useSubmit();
   const onSubmit = (data) => {
-    console.log("new observation data", data);
     submit(data, { method: "POST" });
   };
 
