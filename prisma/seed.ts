@@ -1,13 +1,24 @@
 import { PrismaClient } from "@prisma/client";
-import { createUser } from "../app/models/user.server";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const user = await createUser(
-    process.env["DEMO_SUPERVISOR_EMAIL"]!,
-    process.env["DEMO_SUPERVISOR_PASSWORD"]!
+  const hashedPassword = await bcrypt.hash(
+    process.env["DEMO_SUPERVISOR_PASSWORD"]!,
+    10
   );
+
+  const user = await prisma.user.create({
+    data: {
+      email: process.env["DEMO_SUPERVISOR_EMAIL"]!,
+      password: {
+        create: {
+          hash: hashedPassword,
+        },
+      },
+    },
+  });
 
   const organization1 = await prisma.organization.create({
     data: {
