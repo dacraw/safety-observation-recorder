@@ -93,12 +93,11 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                       <div className="grid grid-cols-3 gap-2">
                         <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
-                            hidden
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
                             type="radio"
                             value={ResponseChoice["CANNOT_DETERMINE"]}
-                            className="peer"
+                            className="peer hidden"
                           />
                           <label
                             htmlFor={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
@@ -111,7 +110,6 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                         </div>
                         <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
-                            hidden
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-no`}
                             type="radio"
@@ -127,7 +125,6 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                         </div>
                         <div className="grid items-center grid-rows-[1fr_auto]">
                           <input
-                            hidden
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-yes`}
                             type="radio"
