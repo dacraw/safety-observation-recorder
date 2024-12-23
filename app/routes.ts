@@ -20,4 +20,5 @@ export default [
     ]),
   ]),
   route("login", "./routes/login.tsx"),
+  route("demoSupervisorLogin", "./routes/demoSupervisorLogin.tsx"),
 ] satisfies RouteConfig;

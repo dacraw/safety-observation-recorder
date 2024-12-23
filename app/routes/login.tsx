@@ -193,6 +193,7 @@ export default function LoginPage() {
                   Remember me
                 </label>
               </div>
+
               {/* <div className="text-center text-sm text-gray-500">
                 Don't have an account?{" "}
                 <Link
@@ -207,6 +208,20 @@ export default function LoginPage() {
               </div> */}
             </div>
           </Form>
+          <div className="mt-4">
+            <Form
+              className="grid text-center"
+              action="/demoSupervisorLogin"
+              method="post"
+            >
+              <button
+                className="rounded blue-button font-bold py-2 px-4"
+                type="submit"
+              >
+                Login as Demo Supervisor
+              </button>
+            </Form>
+          </div>
         </div>
       </div>
     </div>

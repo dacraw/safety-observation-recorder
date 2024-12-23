@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   const user = await createUser(
-    "demo_supervisor@safetyobservations.test",
+    process.env["DEMO_SUPERVISOR_EMAIL"]!,
     process.env["DEMO_SUPERVISOR_PASSWORD"]!
   );
 
