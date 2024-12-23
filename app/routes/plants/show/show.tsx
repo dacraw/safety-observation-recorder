@@ -35,10 +35,11 @@ export default function PlantShow({ loaderData }: Route.ComponentProps) {
           New Observation
         </NavLink>
         <NavLink
+          end
           className={({ isActive }) =>
             `${isActive ? "active-nav-link" : "text-white"} font-bold`
           }
-          to="observations/index"
+          to="observations"
         >
           View Observations
         </NavLink>

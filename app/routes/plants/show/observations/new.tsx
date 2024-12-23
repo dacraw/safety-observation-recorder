@@ -63,12 +63,8 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
   };
 
   return (
-    <div className="m-4">
-      <h3 className="font-bold text-xl mb-6">Create a new observation</h3>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-600 rounded p-2 "
-      >
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className=" ">
         <fieldset className="grid mb-2">
           <legend className="bg-gray-950 p-2 rounded block w-full">
             Plant: {context?.plant?.name}

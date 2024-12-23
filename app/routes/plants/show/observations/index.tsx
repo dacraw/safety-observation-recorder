@@ -6,17 +6,22 @@ export default function ObservationsIndex() {
 
   return (
     <div>
-      <h3>Your Observations for plant: {context.plant.name}</h3>
-      {context.observations.map((observation) => (
-        <div key={observation.id}>
+      <div className="grid mb-4">
+        <h3 className="bg-gray-950 p-2 rounded block w-full">
+          Plant: {context?.plant?.name}
+        </h3>
+      </div>
+      <div className="grid gap-1">
+        {context.observations.map((observation) => (
           <Link
-            className="bg-blue-400 text-white rounded p-2 m-2"
+            key={observation.id}
+            className="bg-blue-400 text-white rounded p-2 text-center"
             to={`${observation.id}`}
           >
             Week of: {observation.weekOf.toLocaleDateString()}
           </Link>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

@@ -31,5 +31,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   if (!user) return null;
 
-  return <Welcome user={user} plants={plants} organization={organization} />;
+  return (
+    <div className="m-4 bg-gray-600 rounded p-2">
+      <Welcome user={user} plants={plants} organization={organization} />
+    </div>
+  );
 }

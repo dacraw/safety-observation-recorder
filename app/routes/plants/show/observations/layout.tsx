@@ -26,7 +26,7 @@ export default function ObservationsLayout({
   const context = useOutletContext<{ categories: Category[] }>();
 
   return (
-    <main>
+    <main className="m-4 bg-gray-600 rounded p-2">
       <Outlet context={{ ...context, user: loaderData?.user }} />
     </main>
   );

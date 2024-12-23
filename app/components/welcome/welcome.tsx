@@ -16,12 +16,18 @@ export function Welcome({
   // const { user, isAuthenticated, isLoading } = useAuth0();
   // console.log("welcome user", user);
   return (
-    <main className="">
+    <main className="grid gap-2">
       <div>Welcome {user.email}</div>
-      <h5>Organization: {organization.name}</h5>
-      <h3>Select A Plant</h3>
+      <h5 className="text-lg font-bold mb-4">
+        Organization: {organization.name}
+      </h5>
+      <h3 className="font-bold">Select a plant below to begin:</h3>
       {plants.map((plant) => (
-        <Link key={plant.id} to={`/plants/${plant.id}`}>
+        <Link
+          className="p-2 blue-button text-center"
+          key={plant.id}
+          to={`/plants/${plant.id}`}
+        >
           {plant.name}
         </Link>
       ))}
