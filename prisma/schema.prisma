@@ -90,7 +90,6 @@ model Question {
 }
 
 enum ResponseChoice {
-  NO_RESPONSE
   CANNOT_DETERMINE
   YES
   NO
