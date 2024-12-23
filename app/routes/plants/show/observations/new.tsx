@@ -67,7 +67,7 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
       <h3 className="font-bold text-xl mb-6">Create a new observation</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-600 rounded p-4 m-4"
+        className="bg-gray-600 rounded p-2 m-4"
       >
         <fieldset className="grid mb-2">
           <legend className="bg-gray-950 p-2 rounded block w-full">
@@ -76,13 +76,19 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
         </fieldset>
         <fieldset>
           {context?.categories.map((category) => (
-            <div className="grid gap-2" key={category.id}>
-              <legend className="sticky top-0 z-40 bg-gray-900 p-2 rounded">
+            <div
+              className="grid gap-2 bg-gray-900 p-2 rounded"
+              key={category.id}
+            >
+              <legend className="sticky top-0 z-40 bg-gray-900 p-2 ">
                 Category: {category?.name}
               </legend>
               {category.subcategories.map((subcategory) => (
-                <div className="grid gap-2" key={subcategory.id}>
-                  <legend className="sticky top-10 z-40 bg-gray-800 p-2 rounded">
+                <div
+                  className="grid gap-2 bg-gray-800 p-2 rounded"
+                  key={subcategory.id}
+                >
+                  <legend className="sticky top-10 z-30 bg-gray-800 p-2">
                     Subcategory: {subcategory.name}
                   </legend>
                   {subcategory.questions.map((question) => (
