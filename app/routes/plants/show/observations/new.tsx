@@ -1,10 +1,19 @@
 import { useForm } from "react-hook-form";
 import { redirect, useOutletContext, useSubmit } from "react-router";
 import type { Route } from "./+types/new";
-import { PrismaClient, ResponseChoice } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { prisma } from "~/db.server";
 import { requireUserId } from "~/session.server";
 import { startCase } from "lodash-es";
+
+// trying this since there seems to be an issue with enums in production
+// https://github.com/sveltejs/kit/issues/4444
+// https://github.com/prisma/prisma/issues/12504#issuecomment-1136126199
+const RESPONSE_CHOICE = {
+  CANNOT_DETERMINE: "CANNOT_DETERMINE",
+  YES: "YES",
+  NO: "NO",
+};
 
 export async function loader({ request }: Route.LoaderArgs) {
   const prisma = new PrismaClient();
@@ -98,7 +107,7 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-cannot-answer`}
                             type="radio"
-                            value={ResponseChoice["CANNOT_DETERMINE"]}
+                            value={RESPONSE_CHOICE["CANNOT_DETERMINE"]}
                             className="peer hidden"
                           />
                           <label
@@ -106,7 +115,7 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                             className="observation-option"
                           >
                             {startCase(
-                              ResponseChoice["CANNOT_DETERMINE"].toLowerCase()
+                              RESPONSE_CHOICE["CANNOT_DETERMINE"].toLowerCase()
                             )}
                           </label>
                         </div>
@@ -115,14 +124,14 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-no`}
                             type="radio"
-                            value={ResponseChoice["NO"]}
+                            value={RESPONSE_CHOICE["NO"]}
                             className="peer hidden"
                           />
                           <label
                             htmlFor={`${category.id}-${subcategory.id}-${question.id}-no`}
                             className="observation-option"
                           >
-                            {startCase(ResponseChoice["NO"].toLowerCase())}
+                            {startCase(RESPONSE_CHOICE["NO"].toLowerCase())}
                           </label>
                         </div>
                         <div className="grid items-center grid-rows-[1fr_auto]">
@@ -130,14 +139,14 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
                             {...register(`question-${question.id}-response`)}
                             id={`${category.id}-${subcategory.id}-${question.id}-yes`}
                             type="radio"
-                            value={ResponseChoice["YES"]}
+                            value={RESPONSE_CHOICE["YES"]}
                             className="peer hidden"
                           />
                           <label
                             htmlFor={`${category.id}-${subcategory.id}-${question.id}-yes`}
                             className="observation-option"
                           >
-                            {startCase(ResponseChoice["YES"].toLowerCase())}
+                            {startCase(RESPONSE_CHOICE["YES"].toLowerCase())}
                           </label>
                         </div>
                       </div>
