@@ -150,7 +150,7 @@ export default function NewObservation({ actionData }: Route.ComponentProps) {
           ))}
         </fieldset>
         <input
-          className="px-2 py-4 my-2 font-bold text-white bg-green-500 rounded block w-full"
+          className="px-2 py-4 my-2 font-bold text-white blue-button rounded block w-full"
           type="submit"
           value="Submit Observation"
         />
