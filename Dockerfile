@@ -17,6 +17,7 @@ WORKDIR /app
 
 ADD prisma .
 RUN npx prisma generate
+RUN ls
 
 RUN yarn build
 # RUN npm run build
@@ -24,8 +25,11 @@ RUN yarn build
 FROM node:20-alpine
 COPY ./package.json yarn.lock /app/
 COPY --from=production-dependencies-env /app/node_modules /app/node_modules
+COPY --from=build-env /app/prisma /app/prisma
 COPY --from=build-env /app/node_modules/.prisma /app/node_modules/.prisma
 COPY --from=build-env /app/build /app/build
 WORKDIR /app
+RUN ls
+RUN ls build
 CMD ["yarn", "start"]
 # CMD ["npm", "run", "start"]
