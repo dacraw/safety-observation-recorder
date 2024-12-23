@@ -22,7 +22,7 @@ export default function Header({ user }: { user: User }) {
         triggerElement={<FontAwesomeIcon icon={faGripLines} size="2xl" />}
       >
         <nav className="grid gap-2 text-center">
-          <Link to="/" className="bg-blue-600/80 block rounded p-2">
+          <Link to="/" className="blue-button block rounded p-2">
             Home
           </Link>
           {isAuthenticated ? (
@@ -32,7 +32,7 @@ export default function Header({ user }: { user: User }) {
                 <p>{user?.email}</p>
               </div>
               <Form
-                className="rounded bg-red-300 font-bold py-2 px-4"
+                className="rounded red-button font-bold py-2 px-4"
                 action="/logout"
                 method="post"
               >
